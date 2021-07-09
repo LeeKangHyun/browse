@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "@browse/components": [
+        "components"
+      ],
+      "@browse/components/*": [
+        "components/*"
+      ],
+      "@browse/pages": [
+        "pages"
+      ],
+      "@browse/pages/*": [
+        "pages/*"
+      ],
+      "@browse/utils": [
+        "utils"
+      ],
+      "@browse/utils/*": [
+        "utils/*"
+      ]
+    }
+  }
+}
