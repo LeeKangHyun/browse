@@ -1,22 +1,46 @@
-import React from 'react';
-import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import React, { ChangeEvent, useState } from 'react';
+
+import userEvent from '@testing-library/user-event';
+import { fireEvent, render, screen } from '@testing-library/react';
 
 import Input from '.';
 
-describe('Input', () => {
-  let spy: unknown;
-  beforeEach(() => {
-    spy = jest.spyOn(React, 'useState');
+describe('', () => {
+  test('callback', async () => {
+    const onChange = jest.fn();
 
-    console.log(spy);
+    render(<Input name="keyword" value="" onChange={ onChange } />);
+
+    await userEvent.type(screen.getByTestId('input'), 'JavaScript');
+
+    expect(onChange).toHaveBeenCalledTimes(10);
+  });
+});
+
+describe('Input', () => {
+  beforeEach(() => {
+    const Wrapper = () => {
+      const [value, setValue] = useState('');
+
+      function onChange(evt: ChangeEvent<HTMLInputElement>) {
+        const { value } = evt.target;
+
+        setValue(value);
+      }
+
+      return <Input name="keyword" value={ value } onChange={ onChange } />;
+    };
+    render(<Wrapper />);
   });
 
-  afterEach(cleanup);
-
   test('Input render', () => {
-    const { getByTestId } = render(<Input name="keyword" value={ 0 } onChange={ () => {} } />);
+    const element = screen.getByTestId('input');
 
-    const element = getByTestId('input') as HTMLInputElement;
+    expect(element).toBeInTheDocument();
+  });
+
+  test('Input Change value', () => {
+    const element = screen.getByTestId('input') as HTMLInputElement;
 
     fireEvent.change(
       element,
