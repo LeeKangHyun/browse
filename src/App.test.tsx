@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, fireEvent, cleanup } from '@testing-library/react';
+import { render, screen, cleanup } from '@testing-library/react';
 
 import App from './App';
 
@@ -16,22 +16,5 @@ describe('App', () => {
 
     // then
     expect(element).toBeInTheDocument();
-  });
-
-  test('fireEvent', () => {
-    // given
-    const element = screen.getByTestId('input') as HTMLInputElement;
-
-    // when
-    fireEvent.change(
-      element,
-      {
-        target: {
-          value: 'Hello World!!',
-        },
-      },
-    );
-
-    expect(element.value).toBe('Hello World!!');
   });
 });

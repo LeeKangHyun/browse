@@ -1,0 +1,13 @@
+nav {
+  display: flex;
+  padding: 1em 1.3em;
+
+  > ul {
+    margin-left: auto;
+  }
+}
+
+.active {
+  font-weight: 700;
+  text-decoration: none;
+}

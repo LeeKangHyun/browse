@@ -1,5 +1,7 @@
 import React, { ChangeEvent } from 'react';
 
+import { Input } from './styled';
+
 interface Props {
   name: string;
   value: any;
@@ -12,7 +14,7 @@ const defaultProps = {
 
 function InputComponent({ type, value, name, onChange }: Props & typeof defaultProps) {
   return (
-    <input data-testid="input" value={ value } name={ name } type={ type } onChange={ onChange } />
+    <Input value={ value } name={ name } type={ type } onChange={ onChange } />
   );
 }
 
